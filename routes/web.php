@@ -18,4 +18,4 @@ Route::get ( '/', function () {
 	
 	
 	
-Route::get('test', 'PlacesController@getResults');
+Route::get('test', 'PlacesController@Index');

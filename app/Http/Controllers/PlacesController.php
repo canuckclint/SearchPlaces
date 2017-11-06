@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-//require_once base_path("app/Libraries/mills/google-places/src/mills/google-places/googlePlaces.php");
+use App\Libraries\Places;
 
-use Mills\GooglePlaces\googlePlaces;
 
 class PlacesController extends Controller
 {
-	protected function getResults()
+	protected function Index()
 	{
-		$apiKey = 'AIzaSyDrUhUNs0C7BEbWncvhT9-dUFhFC4jIRlU';
-		$googlePlaces = new googlePlaces ( $apiKey );
+		$client_ip = $_SERVER['REMOTE_ADDR'];
 		
-		// Set the longitude and the latitude of the location you want to search near for places
-		$latitude = '-33.8804166';
-		$longitude = '151.2107662';
-		$googlePlaces->setLocation ( $latitude . ',' . $longitude );
+		//debug
+		if($client_ip == '::1')
+			$client_ip = '75.72.7.215';
 		
-		$googlePlaces->setRadius ( 5000 );
-		$results = $googlePlaces->search ();
+		$geoResult = app('geocoder')->geocode($client_ip)->get();
+		$geoCoords = $geoResult->first()->getCoordinates();
 		
-		$res = app('geocoder')->geocode('Los Angeles, CA')->get();
+		$res = Places::getResults($geoCoords->getLatitude(), $geoCoords->getLongitude());
 		
-		print_r($results);
 		
-		return $results;
+		
+		
+		
+		var_dump($res);
+		
 		
 	}
 	
