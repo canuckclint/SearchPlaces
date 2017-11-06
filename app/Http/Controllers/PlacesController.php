@@ -18,14 +18,10 @@ class PlacesController extends Controller
 		$geoResult = app('geocoder')->geocode($client_ip)->get();
 		$geoCoords = $geoResult->first()->getCoordinates();
 		
-		$res = Places::getResults($geoCoords->getLatitude(), $geoCoords->getLongitude());
+		$placeResults = Places::getResults($geoCoords->getLatitude(), $geoCoords->getLongitude());
 		
 		
-		
-		
-		
-		var_dump($res);
-		
+		return view("Places\list", ['placeResults' =>$placeResults]);
 		
 	}
 	
