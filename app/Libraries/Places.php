@@ -6,12 +6,18 @@ namespace App\Libraries;
 use Mills\GooglePlaces\googlePlaces;
 
 
-class Places {
-	private $apiKey = 'AIzaSyDrUhUNs0C7BEbWncvhT9-dUFhFC4jIRlU';
+
+
+class Places {	
+// 	public static $GOOGLE_MAPS_API_KEY = '';
+
+	public static $GOOGLE_MAPS_API_KEY = 'AIzaSyDEgqkcGDKEQYw4ARPLIojUU8WN-AmYxx8';
+	
+	
 	
 	public static function getResults($lat, $long) {
-		$apiKey = 'AIzaSyDrUhUNs0C7BEbWncvhT9-dUFhFC4jIRlU';
-		$googlePlaces = new googlePlaces ( $apiKey );
+		
+		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
 		
 		// Set the client ip current longitude and the latitude of the location you want to search near for places
 		$googlePlaces->setLocation ( $lat . ',' . $long );

@@ -10,9 +10,12 @@
         "geocoder-php/google-maps-provider": "^4.1",
         "kartik-v/bootstrap-star-rating": "dev-master",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
+        "stevenmaguire/oauth2-yelp": "^0.1.0",
+        "stevenmaguire/yelp-php": "^2.0",
         "toin0u/geocoder-laravel": "^4.0",
         "twbs/bootstrap": "^3.3"
     },
