@@ -1,3 +1,11 @@
 div#map {
 	float: right;
 }
+
+div.main-container {
+	margin-top: 50px;
+}
+
+input.input-rating {
+	border: none;
+}

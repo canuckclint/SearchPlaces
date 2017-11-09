@@ -25,6 +25,14 @@ class PlacesController extends Controller
 		
 	}
 	
+	protected function Place($placeId)
+	{
+		$placeDetails = Places::getDetails($placeId);
+		
+		return view("Places\place", ['placeDetails' => $placeDetails]);
+	}
+	
+	
 }
 
 ?>

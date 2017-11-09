@@ -16,6 +16,8 @@ Route::get ( '/', function () {
 	return view ( 'welcome' );
 } );
 	
-	
+
 	
 Route::get('test', 'PlacesController@Index');
+
+Route::get('place/{placeId}', 'PlacesController@Place');

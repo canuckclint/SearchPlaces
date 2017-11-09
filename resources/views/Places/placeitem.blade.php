@@ -1,22 +1,8 @@
 @php extract($place, EXTR_PREFIX_ALL, 'p'); 
 @endphp
-
-@section('head')
-
-	<link href="..\vendor\kartik-v\bootstrap-star-rating\css\star-rating.css" media="all" rel="stylesheet" type="text/css" />
-	<style type="text/css">
-		div.rating-xs {
-	    	font-size: 1em;
-		}
-		div.rating-container {
-			display: inline;
-		}
-	</style>
-@stop
-
+<!-- todo install blueimp gallery -->
 @if(isset($place['name']))
-
-	<h3>{{ $p_name }} </h3>
+	<h3><a href="place/{{$p_place_id}}">{{ $p_name }}</a> </h3>
 
 
 	@if(isset($p_types[0]))
@@ -31,3 +17,4 @@
 	@endif
 	
 @endif
+
