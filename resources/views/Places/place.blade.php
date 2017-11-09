@@ -27,23 +27,35 @@
 
 @section('content')
 
-
+<div id="googlePlace">
 @if(isset($placeDetails['result']['name']))
 	<h3>{{ $p_name }}</h3>
 
 
+	<div id="photolinks">
+	@if(isset($placeDetails['result']['photos']))
+		@for($i=0; $i < min(count($p_photos), 7); $i++)
+		    <a href="{{App\Libraries\Places::getPhotoURL($p_photos[$i]['photo_reference'], 500, 500)}}" title="{{$p_name}}">
+		        <img src="{{App\Libraries\Places::getPhotoURL($p_photos[$i]['photo_reference'], 60, 50)}}" title="{{$p_name}}">
+		    </a>
+	    @endfor
+	@endif
+	</div>
+	<p>
 	 {{ $p_vicinity }} 
-	@if(isset($p_types[0]))
-		&bull; {{ ucwords(str_replace('_', ' ', $p_types[0])) }}s 
-	@endif
-	 <br />
 	
-	@if(isset($p_rating))
-		{{ $p_rating }} 
-		<input class="input-rating" value="{{ $p_rating }}" />
-	@endif
+		@if(isset($p_types[0]))
+			&bull; {{ ucwords(str_replace('_', ' ', $p_types[0])) }}
+		@endif
+		 <br />
+		
+		@if(isset($p_rating))
+			{{ $p_rating }} 
+			<input class="input-rating" value="{{ $p_rating }}" />
+		@endif
+	</p>
 	
-	@if(($placeDetails['result']['reviews']))
+	@if(isset($placeDetails['result']['reviews']))
 		<div class="reviews">
 			@foreach($p_reviews as $review)
 				<label>{{ $review['author_name'] }}</label>
@@ -60,15 +72,7 @@
 	@endif
 	
 @endif
-
-<div id="photolinks">
-	@foreach($p_photos as $photo)
-	    <a href="{{App\Libraries\Places::getPhotoURL($photo['photo_reference'], 500, 500)}}" title="{{$p_name}}">
-	        <img src="{{App\Libraries\Places::getPhotoURL($photo['photo_reference'], 50, 50)}}" title="{{$p_name}}">
-	    </a>
-    @endforeach
 </div>
-
 
 
 @stop
