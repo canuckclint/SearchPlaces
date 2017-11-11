@@ -16,9 +16,12 @@
 @section('content')
 
      <!--  google map -->
-     <div id="map" style="width: 400px; height: 350px;"></div>
+     <div id="map" style="width: 400px; height: 350px; margin-top: 20px;"></div>
+     
+     @php $placeIdx=0; @endphp
      @foreach ($placeResults['result'] as $place)
 			@include('Places.placeitem', $place) 
+		@php $placeIdx++; @endphp
      @endforeach
      
 
@@ -31,9 +34,8 @@
 		<script type="text/javascript">
 		
 	   function initMap() {
-		   <?php $i = 0; ?>
+		   <?php $i = 1; ?>
 		   var locations = [];
-		   var i = 1;
 		   @foreach ($placeResults['result'] as $place)
 		   @if (isset($place['name']) && isset($place['geometry']))
 				var location = ['{{$place['name']}}', {{$place['geometry']['location']['lat']}}, {{$place['geometry']['location']['lng']}}, {{$i++}}];
@@ -48,25 +50,35 @@
 	      center: new google.maps.LatLng(44.9537029, -93.0899578),
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    });
-	
-	    var infowindow = new google.maps.InfoWindow();
-	
+
+
+	    function createInfoWindow(map, marker, i) {
+	    	var infowindow =  new google.maps.InfoWindow({
+		    	  content: locations[i][0]
+		      });
+
+
+		      google.maps.event.addListener(marker, 'click', function() {
+			          infowindow.open(map, marker);
+		      });
+		}
+
+		
+		
 	    var marker, i;
-	
+		
 	    for (i = 0; i < locations.length; i++) {
-	      infowindow.setContent(locations[i][3].toString());
-	      marker = new google.maps.Marker({
-		    label: locations[i][3].toString(),
-	        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-	        map: map
-	      });
-	
-	      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-	        return function() {
-	          infowindow.open(map, marker);
-	        }
-	      })(marker, i));
+		      marker = new google.maps.Marker({
+			    label: locations[i][3].toString(),
+		        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		        map: map
+		      });
+
+		      createInfoWindow(map, marker, i);
 	    }
+
+	
+	
 	   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key={{App\Libraries\Places::$GOOGLE_MAPS_API_KEY}}&callback=initMap" type="text/javascript"></script>

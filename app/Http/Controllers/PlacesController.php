@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Libraries\Places;
+use App\Libraries\YelpPlaces;
 
 
 class PlacesController extends Controller
@@ -29,7 +30,18 @@ class PlacesController extends Controller
 	{
 		$placeDetails = Places::getDetails($placeId);
 		
-		return view("Places\place", ['placeDetails' => $placeDetails]);
+		$yelpPlaceDetails = (new YelpPlaces())->getPlaceMatch($placeDetails['result']);
+		
+		
+			
+		$placeDetails['result']['pType'] = 'google';
+		
+		if(!empty($yelpPlaceDetails))
+			$yelpPlaceDetails['pType'] = 'yelp';
+		
+		return view("Places\place", ['placeDetails' => $placeDetails['result'],
+				'yPlaceDetails' => $yelpPlaceDetails
+		]);
 	}
 	
 	

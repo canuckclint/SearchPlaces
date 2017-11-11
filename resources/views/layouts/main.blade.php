@@ -47,19 +47,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <!--  PROJECT NAME BELOW -->
+          <a class="navbar-brand" href="{{url('/')}}">Compare Places</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
+<!--         <div id="navbar" class="navbar-collapse collapse"> -->
+<!--           <form class="navbar-form navbar-right"> -->
+<!--             <div class="form-group"> -->
+<!--               <input type="text" placeholder="Email" class="form-control"> -->
+<!--             </div> -->
+<!--             <div class="form-group"> -->
+<!--               <input type="password" placeholder="Password" class="form-control"> -->
+<!--             </div> -->
+<!--             <button type="submit" class="btn btn-success">Sign in</button> -->
+<!--           </form> -->
+<!--         </div> -->
       </div>
     </nav>
 
@@ -76,7 +77,7 @@
 
 	  @yield('content')
       <footer>
-        <p>&copy; 2016 Company, Inc.</p>
+<!--         <p>&copy; 2017 Company, Inc.</p> -->
       </footer>
     </div> <!-- /container -->
 
@@ -95,7 +96,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
     <script src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!--     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->

@@ -14,6 +14,12 @@ class Places {
 	public static $GOOGLE_MAPS_API_KEY = 'AIzaSyD4ZF8rTYyGnGAWxIGDdDTxiYKd6ANaAr4';
 	
 	
+	public static function filterPlace($place) {
+		if(isset($place['types']) && $place['types'][0] != 'locality')
+		{
+			return true;
+		}
+	}
 	
 	public static function getResults($lat, $long) {
 		
@@ -23,7 +29,11 @@ class Places {
 		$googlePlaces->setLocation ( $lat . ',' . $long );
 		
 		$googlePlaces->setRadius ( 5000 );
+		
 		$results = $googlePlaces->search ();
+		
+		$results['result'] = array_filter($results['result'], "self::filterPlace");
+		
 		
 		return $results;
 		

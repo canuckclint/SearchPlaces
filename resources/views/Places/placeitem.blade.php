@@ -2,7 +2,7 @@
 @endphp
 <!-- todo install blueimp gallery -->
 @if(isset($place['name']))
-	<h3><a href="place/{{$p_place_id}}">{{ $p_name }}</a> </h3>
+	<h3><a href="place/{{$p_place_id}}">{{$placeIdx+1}}. {{ $p_name }}</a> </h3>
 
 
 	@if(isset($p_types[0]))
