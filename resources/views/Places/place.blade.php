@@ -59,4 +59,7 @@
 				$('div#yelpPlace').show('slide',{ direction: "right" }, 1200);
 			});
 		</script>
+		  <script src="https://maps.googleapis.com/maps/api/js?key={{App\Libraries\Places::$GOOGLE_MAPS_API_KEY}}&libraries=places" type="text/javascript"></script>
+		 <script src="{{asset('js/jquery.geocomplete.js')}}" type="text/javascript"></script>
+		 <script src="{{asset('js/listPlaces.js')}}" type="text/javascript"></script>
 @stop

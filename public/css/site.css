@@ -7,10 +7,32 @@ div#map {
 	float: right;
 }
 
+div.container {
+	margin-left: 10px;
+}
+
 div.main-container {
 	margin-top: 50px;
+	margin-left: 100px;
 }
 
 input.input-rating {
 	border: none;
+}
+
+div.searchBar {
+	margin-top: 10px;
+	margin-left: 30px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+div.searchBar input.form-control {
+	width: 400px;
+	display: inline;
+	margin-left: 20px;
+}
+
+div.searchBar button {
+	margin-left: 10px;
 }

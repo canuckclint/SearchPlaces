@@ -21,6 +21,23 @@ class Places {
 		}
 	}
 	
+	public static function getSearchResults($lat, $long, $searchTerm)
+	{
+		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
+		
+		// Set the client ip current longitude and the latitude of the location you want to search near for places
+		$googlePlaces->setLocation( $lat . ',' . $long );
+		
+		$googlePlaces->setKeyword($searchTerm);
+		
+		$googlePlaces->setRadius ( 5000 );
+		
+		$results = $googlePlaces->nearbySearch();
+		
+		return $results;
+		
+	}
+	
 	public static function getResults($lat, $long) {
 		
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
@@ -31,6 +48,7 @@ class Places {
 		$googlePlaces->setRadius ( 5000 );
 		
 		$results = $googlePlaces->search ();
+		
 		
 		$results['result'] = array_filter($results['result'], "self::filterPlace");
 		

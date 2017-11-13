@@ -18,6 +18,8 @@ Route::get ( '/', function () {
 	
 
 	
-Route::get('test', 'PlacesController@Index');
+Route::get('home', 'PlacesController@index');
+
+Route::post('search', 'PlacesController@search');
 
 Route::get('place/{placeId}', 'PlacesController@Place');

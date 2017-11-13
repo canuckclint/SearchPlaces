@@ -61,20 +61,42 @@
 <!--             <button type="submit" class="btn btn-success">Sign in</button> -->
 <!--           </form> -->
 <!--         </div> -->
+	
+		@if (! Request::is('home'))
+         <div class="searchBar"> 
+          {{ Form::open(array('url' => '/search')) }}
+              <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
+              <input type="text" name="location" value="{{$clientLocation}}" class="form-control" />
+              <input type="hidden" name="locationId"  />
+              <button type="submit" class="btn btn-success">Search</button>
+           {{ Form::close() }}
+          </div>
+          @endif
+
+
       </div>
     </nav>
+    
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-<!--     <div class="jumbotron"> -->
-<!--       <div class="container"> -->
-<!--         <h1>Hello, world!</h1> -->
-<!--         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
-<!--         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
-<!--       </div> -->
-<!--     </div> -->
+    @if (Request::is('home'))
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+         <div class="searchBar">
+         {{ Form::open(array('url' => '/search')) }}
+              <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
+              <input type="text" name="location" value="{{$clientLocation}}" class="form-control" />
+              <input type="hidden" name="locationId"  />
+              <button type="submit" class="btn btn-success">Search</button>
+          {{ Form::close() }}
+          </div>
+      </div>
+    </div>
+    @endif
 
     <div class="container main-container">
-
 	  @yield('content')
       <footer>
 <!--         <p>&copy; 2017 Company, Inc.</p> -->

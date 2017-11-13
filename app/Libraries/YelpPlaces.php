@@ -78,7 +78,8 @@ use \Stevenmaguire\OAuth2\Client\Provider\Yelp;
 		
 		public function RatingToImgURL($rating)
 		{
-			return 'img/yelp-stars/regular/regular_' . $rating . '.png';
+			$ratingStr = (int)$rating . (($rating - (int)$rating) == 0.5 ? '_half' : '');
+			return 'img/yelp-stars/regular/regular_' . $ratingStr . '.png';
 		}
 		
 		
