@@ -21,14 +21,14 @@ class PlacesController extends Controller
 	    $geoCoords = $geoResult->first()->getCoordinates();
 	
 		$geoLocation = array('locationStr' => '', 'coords' => '');
-		$clientLocation = '';
+		$locationTerm = '';
 		if($geoResult->count() > 0 && $geoResult->first()->getAdminLevels()->count() > 0)
 		{
-			$clientLocation = $geoResult->first()->getLocality() . ', ' . $geoResult->first()->getAdminLevels()->first()->getCode();
+			$locationTerm = $geoResult->first()->getLocality() . ', ' . $geoResult->first()->getAdminLevels()->first()->getCode();
 				
 			$coords = [$geoCoords->getLatitude(), $geoCoords->getLongitude()];
 			
-			$geoLocation = array('locationStr' => $clientLocation, 'coords' => $coords);
+			$geoLocation = array('locationStr' => $locationTerm, 'coords' => $coords);
 		}
 		
 		return $geoLocation;
@@ -44,7 +44,7 @@ class PlacesController extends Controller
 		
 		
 		return view("Places\list", ['placeResults' =>$placeResults, 
-				'clientLocation' => $geoResult['locationStr'], 
+				'locationTerm' => $geoResult['locationStr'], 
 				'coords' => $geoResult['coords']]);
 		
 	}
@@ -62,7 +62,7 @@ class PlacesController extends Controller
 			$yelpPlaceDetails['pType'] = 'yelp';
 		
 		return view("Places\place", ['placeDetails' => $placeDetails['result'],
-				'clientLocation' => $geoResult['locationStr'],
+				'locationTerm' => $geoResult['locationStr'],
 				'yPlaceDetails' => $yelpPlaceDetails
 		]);
 	}
@@ -82,7 +82,7 @@ class PlacesController extends Controller
 			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
 			
 			return view("Places\list", ['placeResults' =>$placeResults,
-					'clientLocation' => $location,
+					'locationTerm' => $location,
 					'searchTerm' => $searchTerm,
 					'coords' => [$lat, $long]]);
 		} 

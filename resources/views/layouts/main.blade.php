@@ -66,7 +66,7 @@
          <div class="searchBar"> 
           {{ Form::open(array('url' => '/search')) }}
               <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
-              <input type="text" name="location" value="{{$clientLocation}}" class="form-control" />
+              <input type="text" name="location" value="{{$locationTerm}}" class="form-control" />
               <input type="hidden" name="locationId"  />
               <button type="submit" class="btn btn-success">Search</button>
            {{ Form::close() }}
@@ -87,7 +87,7 @@
          <div class="searchBar">
          {{ Form::open(array('url' => '/search')) }}
               <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
-              <input type="text" name="location" value="{{$clientLocation}}" class="form-control" />
+              <input type="text" name="location" value="{{$locationTerm}}" class="form-control" />
               <input type="hidden" name="locationId"  />
               <button type="submit" class="btn btn-success">Search</button>
           {{ Form::close() }}
