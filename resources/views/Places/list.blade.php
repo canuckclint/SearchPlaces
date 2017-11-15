@@ -19,12 +19,11 @@
      <div id="map" style="width: 400px; height: 350px; margin-top: 20px;"></div>
      
      @php $placeIdx=0; @endphp
+   
      @foreach ($placeResults['result'] as $place)
-			@include('Places.placeitem', $place) 
+			@include('Places.placeitem', ['place' => $place, 'placeIdx' => $placeIdx]) 
 		@php $placeIdx++; @endphp
      @endforeach
-     
-
 @stop 
 
 @section('footer')

@@ -30,7 +30,7 @@ class Places {
 		
 		$googlePlaces->setKeyword($searchTerm);
 		
-		$googlePlaces->setRadius ( 5000 );
+		$googlePlaces->setRadius ( 40000 );
 		
 		$results = $googlePlaces->nearbySearch();
 		
@@ -45,9 +45,9 @@ class Places {
 		// Set the client ip current longitude and the latitude of the location you want to search near for places
 		$googlePlaces->setLocation ( $lat . ',' . $long );
 		
-		$googlePlaces->setRadius ( 5000 );
+		$googlePlaces->setRadius ( 40000 );
 		
-		$results = $googlePlaces->search ();
+		$results = $googlePlaces->nearbySearch ();
 		
 		
 		$results['result'] = array_filter($results['result'], "self::filterPlace");

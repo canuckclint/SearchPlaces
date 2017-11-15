@@ -1,23 +1,44 @@
 $(document).on('ready', function(){
-
 	//bind event
 	var searchLocation = $("input[name='location']").val();
 	
-	$("input[name='location']").geocomplete({location: searchLocation})
-			  .bind("geocode:result", gComplete);
+	var geoCodeInput = $("input[name='location']").geocomplete({location: searchLocation});
+	
+	geoCodeInput.bind("geocode:result", gComplete);
+	
+	geoCodeInput.bind("geocode:error", gError);
+	
+	var searchClicked = false;
+	
+	function gError(event) {
+		$("input[name='locationId']").val('');
+		searchComplete = true;
+		
+		if(searchClicked)
+		{
+			$('form#search').submit();
+			searchClicked = false;
+		}
+	}
 	
 	function gComplete (event, result){
 		var placeId = result.place_id;
-		//console.log(placeId);
 		$("input[name='locationId']").val(placeId);
-		//var $locId= $("input[name='location']");
-		//$locId.val('abc' + $locId.val());
+
+		
+		if(searchClicked)
+		{
+			$('form#search').submit();
+			searchClicked = false;
+		}
+		
 	 }
 	
 	// Trigger geocoding request.
 	$("button").click(function(){
-		if(! $("input[name='locationId']").val()) {
-			$("input[name='location']").trigger("geocode");
-		}
+		searchClicked = true;
+		$("input[name='location']").trigger("geocode");	
+
+		return false;
 	});
 });

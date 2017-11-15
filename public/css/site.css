@@ -1,6 +1,43 @@
 div.navbar-header a.navbar-brand
 {
-	color: white;
+	color: #e5dcdb;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.navbar-brand>img {
+	width: 28px;
+	height: 28px;	
+	display: inline;
+}
+
+div.jumbotron {
+	background: none;
+}
+
+div.jumbotron h1 {
+	color: #5d3534;
+	font-size: 40px;
+}
+
+div.jumbotron p {
+ font-size: 20px;
+ font-weight: 600;
+ color: marooon;
+}
+
+=body > .jumbotron::after {
+	background: url(https://lh3.googleusercontent.com/p/AF1QipNnAyveXQ835jhLieJbNbBRZBxM5cwGntLCjOV3=s1600-w600) no-repeat;
+	background-size: cover;
+	 opacity: 0.2;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  position: absolute;
+	  content: "";
+	  height: 300px;
+	  z-index: -1;
 }
 
 div#map {
@@ -36,3 +73,14 @@ div.searchBar input.form-control {
 div.searchBar button {
 	margin-left: 10px;
 }
+
+div#photoFootnote {
+	position: absolute;
+	margin-top: 70px;
+	
+	left: 47%;
+	font-size: 10px;
+}
+
+
+

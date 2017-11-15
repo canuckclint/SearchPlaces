@@ -15,7 +15,7 @@ class PlacesController extends Controller
 		
 		//debug
 		if($client_ip == '::1')
-			$client_ip = '75.72.7.215';
+			$client_ip = '65.110.6.36';
 		
 		$geoResult = app('geocoder')->geocode($client_ip)->get ();
 	    $geoCoords = $geoResult->first()->getCoordinates();
@@ -34,23 +34,85 @@ class PlacesController extends Controller
 		return $geoLocation;
 		
 
-		//session(['key' => 'value']);
 	}
 	
-	protected function Index()
+	protected function Index($includeResults = true)
 	{	
-		$geoResult = $this->getClientGeoLocation();
-		$placeResults = Places::getResults($geoResult['coords'][0], $geoResult['coords'][1]);
+		$searchInput = session('searchInput');
 		
+		if(is_array($searchInput))
+		{
+			$searchTerm = $searchInput['searchTerm'];
+			$locationTerm = $searchInput['locationTerm'];
+			$locationId = $searchInput['locationId'];
+			
+			if(empty($locationId))
+			{
+				$geoResult = $this->getClientGeoLocation();
+				$locationTerm = $geoResult['locationStr'];
+				$locationId = '';
+
+				$lat = $geoResult['coords'][0];
+				$long = $geoResult['coords'][1];
+			}
+			else 
+			{
+				//found locationId
+				//get place to get lat/long
+				$placeDetails = Places::getDetails($locationId);
+					
+				$locationId = $placeDetails['result']['place_id'];
+				//$locationTerm = $this->getLocationTermFromAddressComps($placeDetails['result']['address_components']);
+				
+				$lat =  $placeDetails['result']['geometry']['location']['lat'];
+				$long = $placeDetails['result']['geometry']['location']['lng'];
+			}
+		}
+		else 
+		{
+			$geoResult = $this->getClientGeoLocation();
+			$locationTerm = $geoResult['locationStr'];
+			$locationId = '';
+			$searchTerm = '';
+			
+
+			$lat = $geoResult['coords'][0];
+			$long = $geoResult['coords'][1];
+			
+		}
 		
-		return view("Places\list", ['placeResults' =>$placeResults, 
-				'locationTerm' => $geoResult['locationStr'], 
-				'coords' => $geoResult['coords']]);
+		//set searchInput session
+		$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
+		session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
+		
+		$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
+		
+		if(is_array($placeResults['result']))
+		{
+			return view("Places\list", ['placeResults' =>$placeResults, 
+					'locationTerm' => $locationTerm, 
+					'searchTerm' => $searchTerm,
+					'locationId' => $locationId, 
+					'coords' => [$lat, $long]]);
+		}
+		else 
+		{
+			
+			return view("layouts\main.blade.php");
+		}
 		
 	}
 	
 	protected function Place($placeId)
 	{
+		//get the input
+		$searchInput = session('searchInput');
+		if(!is_array($searchInput))
+		{
+			return $this->index(false);
+		}
+		$coords = session('coords');
+		
 		$geoResult = $this->getClientGeoLocation();
 		$placeDetails = Places::getDetails($placeId);
 		
@@ -62,35 +124,78 @@ class PlacesController extends Controller
 			$yelpPlaceDetails['pType'] = 'yelp';
 		
 		return view("Places\place", ['placeDetails' => $placeDetails['result'],
-				'locationTerm' => $geoResult['locationStr'],
-				'yPlaceDetails' => $yelpPlaceDetails
+				'locationTerm' => $searchInput['locationTerm'],
+				'searchTerm' => $searchInput['searchTerm'],
+				'locationId' => $searchInput['locationId'],
+				'yPlaceDetails' => $yelpPlaceDetails,
+				'coords' => $coords
 		]);
 	}
 	
 	protected function search(Request $req) {
-		$placeId = $req->input('locationId');
+		$locationId = $req->input('locationId');
 		$searchTerm = $req->input('searchTerm');
-		$location = $req->input('location');
-				
-		if(!empty($placeId))
+		$locationTerm = $req->input('location');
+		
+		if(!empty($locationId))
 		{
-			$placeDetails = Places::getDetails($placeId);
+			
+			$placeDetails = Places::getDetails($locationId);
 			
 			$lat =  $placeDetails['result']['geometry']['location']['lat'];
 			$long = $placeDetails['result']['geometry']['location']['lng'];
 			
-			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
 			
-			return view("Places\list", ['placeResults' =>$placeResults,
-					'locationTerm' => $location,
-					'searchTerm' => $searchTerm,
-					'coords' => [$lat, $long]]);
+			//$locationTerm = $this->getLocationTermFromAddressComps($placeDetails['result']['address_components']);
+			$locationId = $placeDetails['result']['place_id'];
+			
+			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
+
+			//post submitted, store in session
+			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
+			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
+			
+			if(isset($placeResults['result'])) {
+				return view("Places\list", ['placeResults' =>$placeResults,
+						'locationTerm' => $locationTerm,
+						'locationId' => $locationId,
+						'searchTerm' => $searchTerm,
+						'coords' => [$lat, $long]]);
+			}
+			
+			
+			return $this->index(false);
 		} 
 		else 
 		{
-			return 'Snag! Place not found!';
+			//post submitted, store in session
+			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
+			session(['searchInput' => $searchInput]);
+			
+			return $this->index(false);
 		}
 		
+	}
+	
+	private function getLocationTermFromAddressComps($ac) {
+		$locality =  '';
+		$state = '';
+		foreach($ac as $address_component)
+		{
+			
+			// Check types is set then get first element (may want to loop through this to be safe,
+			// rather than getting the first element all the time)
+			if(isset($address_component['types']) && $address_component['types'][0] == 'locality')
+			{
+				$locality = $address_component['long_name'];
+			}
+			if(isset($address_component['types']) && $address_component['types'][0] == 'administrative_area_level_1')
+			{
+				$state = $address_component['short_name'];
+			}
+			
+		}
+		return $locality . ', ' . $state;
 	}
 }
 

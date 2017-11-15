@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{{ asset('img/location-marker-icon.png') }}">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>i SearcPlaces</title>
 
     <!-- Bootstrap core CSS -->    
     <link href="{{asset('../vendor/twbs/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -35,6 +35,7 @@
     <![endif]-->
     
   </head>
+  
 
   <body>
 
@@ -48,7 +49,11 @@
             <span class="icon-bar"></span>
           </button>
           <!--  PROJECT NAME BELOW -->
-          <a class="navbar-brand" href="{{url('/')}}">Compare Places</a>
+         
+          <a class="navbar-brand" href="{{url('/home')}}">
+	          <img id="companyLogo" src="{{ asset('img/location-marker-icon.png') }}" title="SearchPlaces" />
+	          <span>i&nbsp;SearchPlaces</span>
+          </a>
         </div>
 <!--         <div id="navbar" class="navbar-collapse collapse"> -->
 <!--           <form class="navbar-form navbar-right"> -->
@@ -64,10 +69,10 @@
 	
 		@if (! Request::is('home'))
          <div class="searchBar"> 
-          {{ Form::open(array('url' => '/search')) }}
+          {{ Form::open(array('id' => 'search', 'url' => '/search')) }}
               <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
-              <input type="text" name="location" value="{{$locationTerm}}" class="form-control" />
-              <input type="hidden" name="locationId"  />
+              <input type="text" name="location" value="{{isset($locationTerm) ? $locationTerm : '' }}" class="form-control" />
+              <input type="hidden" name="locationId"  value="{{isset($locationId) ? $locationId : '' }}"/>
               <button type="submit" class="btn btn-success">Search</button>
            {{ Form::close() }}
           </div>
@@ -82,17 +87,23 @@
     @if (Request::is('home'))
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h1>Search Places</h1>
+        <p>Search Places and compare reviews from trusted sites like Yelp and Google!</p>
          <div class="searchBar">
-         {{ Form::open(array('url' => '/search')) }}
+         {{ Form::open(array('id' => 'search', 'url' => '/search')) }}
               <input type="text" name="searchTerm"  placeholder="Search Places" value="{{isset($searchTerm) ? $searchTerm : '' }}" class="form-control" />
-              <input type="text" name="location" value="{{$locationTerm}}" class="form-control" />
-              <input type="hidden" name="locationId"  />
+              <input type="text" name="location" value="{{isset($locationTerm) ? $locationTerm : '' }}" class="form-control" />
+              <input type="hidden" name="locationId"  value="{{isset($locationId) ? $locationId : '' }}"/>
               <button type="submit" class="btn btn-success">Search</button>
           {{ Form::close() }}
           </div>
       </div>
+      	  @if(isset($placeResults['result'][0]['name']))
+      	  	@php $placeId = $placeResults['result'][0]['place_id']; @endphp
+	          <div id="photoFootnote">
+	          	<a href="place/{{$placeId}}">{{$placeResults['result'][0]['name'] . ', ' . $placeResults['result'][0]['vicinity']}}</a>
+	          </div>
+          @endif
     </div>
     @endif
 

@@ -37,3 +37,13 @@ img.googleLogo {
 img.yelpLogo {
 	height: 75px;
 }
+
+div#map.placeMap {
+	position: absolute;
+	right: 20px;
+	
+	width: 200px; 
+	height: 200px; 
+	
+	margin-top: 20px;
+}
