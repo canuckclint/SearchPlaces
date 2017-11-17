@@ -89,7 +89,7 @@ class PlacesController extends Controller
 		
 		if(is_array($placeResults['result']))
 		{
-			return view("Places\list", ['placeResults' =>$placeResults, 
+			return view("Places/list", ['placeResults' =>$placeResults, 
 					'locationTerm' => $locationTerm, 
 					'searchTerm' => $searchTerm,
 					'locationId' => $locationId, 
@@ -98,7 +98,7 @@ class PlacesController extends Controller
 		else 
 		{
 			
-			return view("layouts\main.blade.php");
+			return view("layouts/main.blade.php");
 		}
 		
 	}
@@ -123,7 +123,7 @@ class PlacesController extends Controller
 		if(!empty($yelpPlaceDetails))
 			$yelpPlaceDetails['pType'] = 'yelp';
 		
-		return view("Places\place", ['placeDetails' => $placeDetails['result'],
+		return view("Places/place", ['placeDetails' => $placeDetails['result'],
 				'locationTerm' => $searchInput['locationTerm'],
 				'searchTerm' => $searchInput['searchTerm'],
 				'locationId' => $searchInput['locationId'],
@@ -156,7 +156,7 @@ class PlacesController extends Controller
 			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
 			
 			if(isset($placeResults['result'])) {
-				return view("Places\list", ['placeResults' =>$placeResults,
+				return view("Places/list", ['placeResults' =>$placeResults,
 						'locationTerm' => $locationTerm,
 						'locationId' => $locationId,
 						'searchTerm' => $searchTerm,
