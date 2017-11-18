@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /public/error_log
 /node_modules
 /public/hot
@@ -12,19 +11,4 @@ npm-debug.log
 yarn-error.log
 .env
 /google-terms
-=======
-/public/error_log
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/.idea
-/.vagrant
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-.env
-/google-terms
->>>>>>> b7ce69728455668dfdace80bcb4dbd78a0dcac54
+
