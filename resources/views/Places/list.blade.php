@@ -2,7 +2,7 @@
 
 @section('head')
 
-	<link href="{{asset('..\vendor\kartik-v\bootstrap-star-rating\css\star-rating.css')}}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{{asset('vendor\kartik-v\bootstrap-star-rating\css\star-rating.css')}}" media="all" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		div.rating-xs {
 	    	font-size: 1em;
@@ -27,7 +27,7 @@
 @stop 
 
 @section('footer')
-		<script src="{{asset('..\vendor\kartik-v\bootstrap-star-rating\js\star-rating.js')}}" type="text/javascript"></script>
+		<script src="{{asset('vendor\kartik-v\bootstrap-star-rating\js\star-rating.js')}}" type="text/javascript"></script>
 		<script src="{{asset('js/star-rating.js')}}" type="text/javascript"></script>
 		
 

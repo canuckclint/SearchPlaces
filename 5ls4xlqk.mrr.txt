@@ -1,0 +1,295 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	deleted:    ../.buildpath
+#	deleted:    ../.env.example
+#	deleted:    ../.gitattributes
+#	deleted:    ../.gitignore
+#	deleted:    ../.project
+#	deleted:    ../.settings/org.eclipse.php.core.prefs
+#	deleted:    ../.settings/org.eclipse.wst.common.project.facet.core.xml
+#	deleted:    ../app/Console/Kernel.php
+#	deleted:    ../app/Exceptions/Handler.php
+#	deleted:    ../app/Http/Controllers/Auth/ForgotPasswordController.php
+#	deleted:    ../app/Http/Controllers/Auth/LoginController.php
+#	deleted:    ../app/Http/Controllers/Auth/RegisterController.php
+#	deleted:    ../app/Http/Controllers/Auth/ResetPasswordController.php
+#	deleted:    ../app/Http/Controllers/Controller.php
+#	deleted:    ../app/Http/Controllers/PlacesController.php
+#	deleted:    ../app/Http/Kernel.php
+#	deleted:    ../app/Http/Middleware/EncryptCookies.php
+#	deleted:    ../app/Http/Middleware/RedirectIfAuthenticated.php
+#	deleted:    ../app/Http/Middleware/TrimStrings.php
+#	deleted:    ../app/Http/Middleware/TrustProxies.php
+#	deleted:    ../app/Http/Middleware/VerifyCsrfToken.php
+#	deleted:    ../app/Libraries/Places.php
+#	deleted:    ../app/Libraries/YelpPlaces.php
+#	deleted:    ../app/Providers/AppServiceProvider.php
+#	deleted:    ../app/Providers/AuthServiceProvider.php
+#	deleted:    ../app/Providers/BroadcastServiceProvider.php
+#	deleted:    ../app/Providers/EventServiceProvider.php
+#	deleted:    ../app/Providers/RouteServiceProvider.php
+#	deleted:    ../app/User.php
+#	deleted:    ../artisan
+#	deleted:    ../bootstrap/app.php
+#	deleted:    ../bootstrap/cache/.gitignore
+#	deleted:    ../composer.json
+#	deleted:    ../composer.lock
+#	deleted:    ../config/app.php
+#	deleted:    ../config/auth.php
+#	deleted:    ../config/broadcasting.php
+#	deleted:    ../config/cache.php
+#	deleted:    ../config/database.php
+#	deleted:    ../config/filesystems.php
+#	deleted:    ../config/mail.php
+#	deleted:    ../config/queue.php
+#	deleted:    ../config/services.php
+#	deleted:    ../config/session.php
+#	deleted:    ../config/view.php
+#	deleted:    ../database/.gitignore
+#	deleted:    ../database/factories/UserFactory.php
+#	deleted:    ../database/migrations/2014_10_12_000000_create_users_table.php
+#	deleted:    ../database/migrations/2014_10_12_100000_create_password_resets_table.php
+#	deleted:    ../database/seeds/DatabaseSeeder.php
+#	deleted:    ../package.json
+#	deleted:    ../phpunit.xml
+#	deleted:    ../public/.htaccess
+#	deleted:    ../public/css/app.css
+#	deleted:    ../public/css/blueimp-gallery/blueimp-gallery-indicator.css
+#	deleted:    ../public/css/blueimp-gallery/blueimp-gallery-video.css
+#	deleted:    ../public/css/blueimp-gallery/blueimp-gallery.css
+#	deleted:    ../public/css/blueimp-gallery/blueimp-gallery.min.css
+#	deleted:    ../public/css/blueimp-gallery/demo.css
+#	deleted:    ../public/css/img/error.png
+#	deleted:    ../public/css/img/error.svg
+#	deleted:    ../public/css/img/loading.gif
+#	deleted:    ../public/css/img/play-pause.png
+#	deleted:    ../public/css/img/play-pause.svg
+#	deleted:    ../public/css/img/video-play.png
+#	deleted:    ../public/css/img/video-play.svg
+#	deleted:    ../public/css/place.css
+#	deleted:    ../public/css/site.css
+#	deleted:    ../public/favicon.bak.ico
+#	deleted:    ../public/img/gmaps_logo.png
+#	deleted:    ../public/img/gplaces_logo.png
+#	deleted:    ../public/img/location-marker-icon.png
+#	deleted:    ../public/img/location_marker.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_0.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_0@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_0@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1_half.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1_half@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_1_half@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2_half.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2_half@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_2_half@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3_half.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3_half@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_3_half@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4_half.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4_half@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_4_half@3x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_5.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_5@2x.png
+#	deleted:    ../public/img/yelp-stars/extra_large/extra_large_5@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_0.png
+#	deleted:    ../public/img/yelp-stars/large/large_0@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_0@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_1.png
+#	deleted:    ../public/img/yelp-stars/large/large_1@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_1@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_1_half.png
+#	deleted:    ../public/img/yelp-stars/large/large_1_half@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_1_half@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_2.png
+#	deleted:    ../public/img/yelp-stars/large/large_2@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_2@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_2_half.png
+#	deleted:    ../public/img/yelp-stars/large/large_2_half@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_2_half@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_3.png
+#	deleted:    ../public/img/yelp-stars/large/large_3@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_3@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_3_half.png
+#	deleted:    ../public/img/yelp-stars/large/large_3_half@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_3_half@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_4.png
+#	deleted:    ../public/img/yelp-stars/large/large_4@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_4@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_4_half.png
+#	deleted:    ../public/img/yelp-stars/large/large_4_half@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_4_half@3x.png
+#	deleted:    ../public/img/yelp-stars/large/large_5.png
+#	deleted:    ../public/img/yelp-stars/large/large_5@2x.png
+#	deleted:    ../public/img/yelp-stars/large/large_5@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_0.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_0@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_0@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1_half.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1_half@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_1_half@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2_half.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2_half@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_2_half@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3_half.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3_half@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_3_half@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4_half.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4_half@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_4_half@3x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_5.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_5@2x.png
+#	deleted:    ../public/img/yelp-stars/regular/regular_5@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_0.png
+#	deleted:    ../public/img/yelp-stars/small/small_0@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_0@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_1.png
+#	deleted:    ../public/img/yelp-stars/small/small_1@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_1@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_1_half.png
+#	deleted:    ../public/img/yelp-stars/small/small_1_half@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_1_half@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_2.png
+#	deleted:    ../public/img/yelp-stars/small/small_2@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_2@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_2_half.png
+#	deleted:    ../public/img/yelp-stars/small/small_2_half@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_2_half@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_3.png
+#	deleted:    ../public/img/yelp-stars/small/small_3@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_3@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_3_half.png
+#	deleted:    ../public/img/yelp-stars/small/small_3_half@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_3_half@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_4.png
+#	deleted:    ../public/img/yelp-stars/small/small_4@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_4@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_4_half.png
+#	deleted:    ../public/img/yelp-stars/small/small_4_half@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_4_half@3x.png
+#	deleted:    ../public/img/yelp-stars/small/small_5.png
+#	deleted:    ../public/img/yelp-stars/small/small_5@2x.png
+#	deleted:    ../public/img/yelp-stars/small/small_5@3x.png
+#	deleted:    ../public/img/yelp_logo.png
+#	deleted:    ../public/index.php
+#	deleted:    ../public/js/app.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery-fullscreen.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery-indicator.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery-video.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery-vimeo.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery-youtube.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-gallery.min.js
+#	deleted:    ../public/js/blueimp-gallery/blueimp-helper.js
+#	deleted:    ../public/js/blueimp-gallery/demo.js
+#	deleted:    ../public/js/blueimp-gallery/jquery.blueimp-gallery.js
+#	deleted:    ../public/js/blueimp-gallery/jquery.blueimp-gallery.min.js
+#	deleted:    ../public/js/jquery.geocomplete.js
+#	deleted:    ../public/js/jquery.geocomplete.min.js
+#	deleted:    ../public/js/listPlaces.js
+#	deleted:    ../public/js/star-rating.js
+#	deleted:    ../public/robots.txt
+#	deleted:    ../resources/assets/js/app.js
+#	deleted:    ../resources/assets/js/bootstrap.js
+#	deleted:    ../resources/assets/js/components/ExampleComponent.vue
+#	deleted:    ../resources/assets/sass/_variables.scss
+#	deleted:    ../resources/assets/sass/app.scss
+#	deleted:    ../resources/lang/en/auth.php
+#	deleted:    ../resources/lang/en/pagination.php
+#	deleted:    ../resources/lang/en/passwords.php
+#	deleted:    ../resources/lang/en/validation.php
+#	deleted:    ../resources/views/Places/list.blade.php
+#	deleted:    ../resources/views/Places/place.blade.php
+#	deleted:    ../resources/views/Places/placecontent.blade.php
+#	deleted:    ../resources/views/Places/placeitem.blade.php
+#	deleted:    ../resources/views/home.blade.php
+#	deleted:    ../resources/views/index.blade.php
+#	deleted:    ../resources/views/layouts/main.blade.php
+#	deleted:    ../resources/views/welcome.blade.php
+#	deleted:    ../routes/api.php
+#	deleted:    ../routes/channels.php
+#	deleted:    ../routes/console.php
+#	deleted:    ../routes/web.php
+#	deleted:    ../server.php
+#	deleted:    ../storage/app/.gitignore
+#	deleted:    ../storage/app/public/.gitignore
+#	deleted:    ../storage/framework/.gitignore
+#	deleted:    ../storage/framework/cache/.gitignore
+#	deleted:    ../storage/framework/sessions/.gitignore
+#	deleted:    ../storage/framework/testing/.gitignore
+#	deleted:    ../storage/framework/views/.gitignore
+#	deleted:    ../storage/logs/.gitignore
+#	deleted:    ../tests/CreatesApplication.php
+#	deleted:    ../tests/Feature/ExampleTest.php
+#	deleted:    ../tests/TestCase.php
+#	deleted:    ../tests/Unit/ExampleTest.php
+#	modified:   bin/php-parse.bat
+#	modified:   bin/phpunit.bat
+#	modified:   bin/psysh.bat
+#	modified:   fzaninotto/faker/test/Faker/Provider/ro_RO/PersonTest.php
+#	modified:   kartik-v/bootstrap-star-rating/.github/CONTRIBUTING.md
+#	modified:   kartik-v/bootstrap-star-rating/.github/ISSUE_TEMPLATE.md
+#	modified:   kartik-v/bootstrap-star-rating/.github/PULL_REQUEST_TEMPLATE.md
+#	modified:   kartik-v/bootstrap-star-rating/css/star-rating.css
+#	modified:   kartik-v/bootstrap-star-rating/css/star-rating.min.css
+#	modified:   kartik-v/bootstrap-star-rating/examples/index.html
+#	modified:   kartik-v/bootstrap-star-rating/js/star-rating.js
+#	modified:   kartik-v/bootstrap-star-rating/js/star-rating.min.js
+#	modified:   mockery/mockery/.styleci.yml
+#	modified:   swiftmailer/swiftmailer/tests/_samples/charsets/iso-2022-jp/one.txt
+#	modified:   symfony/translation/Resources/schemas/xliff-core-1.2-strict.xsd
+#	deleted:    ../webpack.mix.js
+#	deleted:    ../yarn.lock
+#
+# Untracked files:
+#	../.buildpath
+#	../.env.example
+#	../.gitattributes
+#	../.gitignore
+#	../.project
+#	../.settings/
+#	../app/
+#	../artisan
+#	../bootstrap/
+#	../composer.json
+#	../composer.lock
+#	../config/
+#	../database/
+#	../package.json
+#	../phpunit.xml
+#	../public/
+#	../resources/
+#	../routes/
+#	../server.php
+#	../storage/
+#	../tests/
+#	../webpack.mix.js
+#	../yarn.lock
+#
+

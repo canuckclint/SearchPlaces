@@ -42,7 +42,7 @@
 
 {{-- var_dump($placeDetails['result']) --}}
 @section('footer')
-		<script src="{{asset('..\vendor\kartik-v\bootstrap-star-rating\js\star-rating.js')}}" type="text/javascript"></script>
+		<script src="{{asset('vendor\kartik-v\bootstrap-star-rating\js\star-rating.js')}}" type="text/javascript"></script>
 		<script src="{{asset('js/star-rating.js')}}" type="text/javascript"></script>
 		<script src="{{asset('js/blueimp-gallery/blueimp-gallery.min.js')}}" type="text/javascript"></script>
 		<script>
