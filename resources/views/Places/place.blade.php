@@ -25,12 +25,12 @@
 
 @section('content')
 	<div id="googlePlace">
-		@include('Places\placecontent')
+		@include('Places/placecontent')
 	</div>
 	@if(!empty($yPlaceDetails))
 		<div id="yelpPlace">
 	
-			@include('Places\placecontent', ['placeDetails' => $yPlaceDetails])
+			@include('Places/placecontent', ['placeDetails' => $yPlaceDetails])
 	
 		</div>
 	@endif
