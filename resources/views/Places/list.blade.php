@@ -16,7 +16,7 @@
 @section('content')
 
      <!--  google map -->
-     <div id="map" style="width: 400px; height: 350px; margin-top: 20px;"></div>
+     <div id="map" style="width: 300px; height: 250px; margin-top: 20px;"></div>
      
      @php $placeIdx=0; @endphp
    
