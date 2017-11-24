@@ -38,12 +38,24 @@ img.yelpLogo {
 	height: 75px;
 }
 
-div#map.placeMap {
-	position: absolute;
-	right: 20px;
-	
-	width: 200px; 
-	height: 200px; 
-	
-	margin-top: 20px;
+@media (min-width: 768px) {
+	div#map.placeMap {
+		position: absolute;
+		right: 20px;
+		
+		width: 200px; 
+		height: 200px; 
+		
+		margin-top: 20px;
+	}
+}
+
+/* mobile styles */
+@media (max-width: 767px) {
+	div#map.placeMap {
+		display: none;
+	}
+	div#yelpPlace {
+		float: none;
+	}
 }
