@@ -141,14 +141,12 @@ class googlePlaces
         }
 
         $urlParameterString = $this->_formatParametersForURL();
-
+     
         $URLToCall = $this->_apiUrl . '/' . $this->_apiCallType . '/' . $this->_outputType . '?key=' . $this->_apiKey . '&' . $urlParameterString;
-
         
         $result = json_decode($this->_curlCall($URLToCall), true);
 
         $formattedResults = $this->_formatResults($result);
-
         return $formattedResults;
     }
 
@@ -341,7 +339,6 @@ class googlePlaces
                 break;
         }
 
-
         return $parameterString;
     }
 
@@ -393,8 +390,12 @@ class googlePlaces
         }
 
         $body = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        if(isset($info['http_code']) && $info['http_code'] >=400) {
+        	echo 'Bad Places Http Request: '. $info['http_code'];
+        	exit;
+        }
         curl_close($ch);
-
         return $body;
     }
 

@@ -136,7 +136,6 @@ class PlacesController extends Controller
 		$locationId = $req->input('locationId');
 		$searchTerm = $req->input('searchTerm');
 		$locationTerm = $req->input('location');
-		
 		if(!empty($locationId))
 		{
 			
@@ -145,12 +144,11 @@ class PlacesController extends Controller
 			$lat =  $placeDetails['result']['geometry']['location']['lat'];
 			$long = $placeDetails['result']['geometry']['location']['lng'];
 			
-			
 			//$locationTerm = $this->getLocationTermFromAddressComps($placeDetails['result']['address_components']);
 			$locationId = $placeDetails['result']['place_id'];
 			
 			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
-
+			
 			//post submitted, store in session
 			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
 			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
