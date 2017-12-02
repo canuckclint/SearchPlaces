@@ -15,7 +15,7 @@ class Places {
 	public static function getSearchResults($lat, $long, $searchTerm) {
 		if(empty($searchTerm))
 		{
-			return $this->_getResults($lat, $long);
+			return self::_getResults($lat, $long);
 		}
 		
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
