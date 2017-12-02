@@ -13,6 +13,11 @@ class Places {
 		}
 	}
 	public static function getSearchResults($lat, $long, $searchTerm) {
+		if(empty($searchTerm))
+		{
+			return $this->_getResults($lat, $long);
+		}
+		
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
 		
 		// Set the client ip current longitude and the latitude of the location you want to search near for places
@@ -28,7 +33,7 @@ class Places {
 		
 		return $results;
 	}
-	public static function getResults($lat, $long) {
+	private static function _getResults($lat, $long) {
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
 		
 		// Set the client ip current longitude and the latitude of the location you want to search near for places
