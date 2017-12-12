@@ -149,11 +149,27 @@ class PlacesController extends Controller
 			
 			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
 			
+
+			
 			//post submitted, store in session
 			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
 			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
 			
 			if(isset($placeResults['result'])) {
+				//add distances
+				foreach($placeResults['result'] as &$placeResult) {
+					if(isset($placeResult['geometry']['location'])) {
+						$plat = $placeResult['geometry']['location']['lat'];
+						$plong = $placeResult['geometry']['location']['lng'];
+						
+						$distance = $this->getDistanceBetweenPoints($lat, $long, $plat, $plong);
+						$placeResult['distance'] = $distance;
+					}
+				}
+				
+				//sort by distance
+				usort($placeResults['result'], 'self::compareDistance');
+				
 				return view("Places/list", ['placeResults' =>$placeResults,
 						'locationTerm' => $locationTerm,
 						'locationId' => $locationId,
@@ -175,6 +191,19 @@ class PlacesController extends Controller
 		
 	}
 	
+	private function compareDistance($place1, $place2) {
+		$dist1 =0;
+		$dist2 = 0;
+		if(isset($place1['distance'])) {
+			$dist1 = $place1['distance'];
+		}
+		if(isset($place2['distance'])) {
+			$dist2 = $place2['distance'];
+		}
+		return ($dist1 > $dist2);
+			
+	}
+	
 	private function getLocationTermFromAddressComps($ac) {
 		$locality =  '';
 		$state = '';
@@ -194,6 +223,34 @@ class PlacesController extends Controller
 			
 		}
 		return $locality . ', ' . $state;
+	}
+	
+	
+	private function getDrivingDistance($lat1,$long1, $lat2, $long2)
+	{
+		$url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$long1."&&units=imperial&destinations=".$lat2.",".$long2."&mode=driving&key=".Places::$GOOGLE_MAPS_API_KEY;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		$response = curl_exec($ch);
+		curl_close($ch);
+		$response_a = json_decode($response, true);
+		$dist = $response_a['rows'][0]['elements'][0]['distance']['text'];
+		$time = $response_a['rows'][0]['elements'][0]['duration']['text'];
+	
+		return array('distance' => $dist, 'time' => $time);
+	}
+	
+	private function getDistanceBetweenPoints($lat1, $lon1, $lat2, $lon2) {
+	    $theta = $lon1 - $lon2;
+	    $miles = (sin(deg2rad($lat1)) * sin(deg2rad($lat2))) + (cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)));
+	    $miles = acos($miles);
+	    $miles = rad2deg($miles);
+	    $miles = $miles * 60 * 1.1515;
+	    return number_format($miles, 1);
 	}
 }
 

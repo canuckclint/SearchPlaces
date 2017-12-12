@@ -12,6 +12,7 @@ class Places {
 			return true;
 		}
 	}
+	
 	public static function getSearchResults($lat, $long, $searchTerm) {
 		if(empty($searchTerm))
 		{
@@ -33,6 +34,7 @@ class Places {
 		
 		return $results;
 	}
+	
 	private static function _getResults($lat, $long) {
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
 		

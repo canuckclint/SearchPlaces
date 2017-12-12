@@ -26,14 +26,18 @@
 	@if(isset($p_types[0]))
 		{{ ucwords($p_types[0]) }} &bull;
 	@endif
+	
+	@if(isset($p_distance))
+		{{ ($p_distance) }} Mi &bull;
+	@endif
 
 	@if(isset($p_formatted_address))
 	 {{ $p_formatted_address }} <br />
 	@endif
 	
-	@if(isset($p_rating))
-		{{ $p_rating }} 
+	@if(isset($p_rating)) 
 		<input class="input-rating"  value="{{ $p_rating }}" />
+		{{ $p_rating }}
 	@endif
 	
 @endif
