@@ -21,8 +21,10 @@
      @php $placeIdx=0; @endphp
    
      @foreach ($placeResults['result'] as $place)
+     	@if(isset($place['name']))
 			@include('Places.placeitem', ['place' => $place, 'placeIdx' => $placeIdx]) 
-		@php $placeIdx++; @endphp
+			@php $placeIdx++; @endphp
+		@endif
      @endforeach
 @stop 
 

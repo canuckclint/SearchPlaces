@@ -20,25 +20,24 @@
 	@endif
 @append
 <!-- todo install blueimp gallery -->
-@if(isset($place['name']))
-	<h3><a href="place/{{$p_place_id}}">{{$placeIdx+1}}. {{ $p_name }}</a> </h3>
-	
-	@if(isset($p_types[0]))
-		{{ ucwords($p_types[0]) }} &bull;
-	@endif
-	
-	@if(isset($p_distance))
-		{{ ($p_distance) }} Mi &bull;
-	@endif
 
-	@if(isset($p_formatted_address))
-	 {{ $p_formatted_address }} <br />
-	@endif
-	
-	@if(isset($p_rating)) 
-		<input class="input-rating"  value="{{ $p_rating }}" />
-		{{ $p_rating }}
-	@endif
-	
+<h3><a href="place/{{$p_place_id}}">{{$placeIdx+1}}. {{ $p_name }}</a> </h3>
+
+@if(isset($p_types[0]))
+	{{ ucwords($p_types[0]) }} &bull;
 @endif
+
+@if(isset($p_distance))
+	{{ ($p_distance) }} Mi &bull;
+@endif
+
+@if(isset($p_formatted_address))
+ {{ $p_formatted_address }} <br />
+@endif
+
+@if(isset($p_rating)) 
+	<input class="input-rating"  value="{{ $p_rating }}" />
+	{{ $p_rating }}
+@endif
+
 
