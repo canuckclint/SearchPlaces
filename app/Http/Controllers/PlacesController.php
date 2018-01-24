@@ -149,8 +149,6 @@ class PlacesController extends Controller
 			
 			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
 			
-
-			
 			//post submitted, store in session
 			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
 			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
@@ -166,6 +164,7 @@ class PlacesController extends Controller
 						$placeResult['distance'] = $distance;
 					}
 				}
+				
 				
 				//sort by distance
 				usort($placeResults['result'], 'self::compareDistance');
@@ -192,7 +191,7 @@ class PlacesController extends Controller
 	}
 	
 	private function compareDistance($place1, $place2) {
-		$dist1 =0;
+		$dist1 = 0;
 		$dist2 = 0;
 		if(isset($place1['distance'])) {
 			$dist1 = $place1['distance'];
@@ -250,7 +249,7 @@ class PlacesController extends Controller
 	    $miles = acos($miles);
 	    $miles = rad2deg($miles);
 	    $miles = $miles * 60 * 1.1515;
-	    return number_format($miles, 1);
+	    return number_format($miles, 1, '.', '');
 	}
 }
 
