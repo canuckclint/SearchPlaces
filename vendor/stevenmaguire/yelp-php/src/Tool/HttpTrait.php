@@ -182,7 +182,11 @@ trait HttpTrait
      */
     protected function processRequest(RequestInterface $request)
     {
-        $response = $this->getResponse($request);
+    	try {
+        	$response = $this->getResponse($request);
+    	} catch (Exception $e) {
+    		return false;
+    	}
         return json_decode($response->getBody());
     }
 

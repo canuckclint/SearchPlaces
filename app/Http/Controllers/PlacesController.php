@@ -80,14 +80,12 @@ class PlacesController extends Controller
 			$long = $geoResult['coords'][1];
 			
 		}
-		
 		//set searchInput session
 		$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
 		session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);
 		
 		$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
-		
-		if(is_array($placeResults['result']))
+		if(isset($placeResults['result']) && is_array($placeResults['result']))
 		{
 			return view("Places/list", ['placeResults' =>$placeResults, 
 					'locationTerm' => $locationTerm, 
@@ -98,7 +96,7 @@ class PlacesController extends Controller
 		else 
 		{
 			
-			return view("layouts/main.blade.php");
+			return view("layouts/main");
 		}
 		
 	}
@@ -148,7 +146,7 @@ class PlacesController extends Controller
 			$locationId = $placeDetails['result']['place_id'];
 			
 			$placeResults = Places::getSearchResults($lat, $long, $searchTerm);
-			
+
 			//post submitted, store in session
 			$searchInput = ['locationId' => $locationId, 'searchTerm' => $searchTerm, 'locationTerm' => $locationTerm];
 			session(['searchInput' => $searchInput, 'coords' => [$lat, $long]]);

@@ -122,6 +122,8 @@ class Client implements HttpContract
         $request = $this->getRequest('GET', $path);
 
         return $this->processRequest($request);
+        
+        
     }
 
     /**

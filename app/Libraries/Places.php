@@ -12,11 +12,9 @@ class Places {
 			return true;
 		}
 	}
-	
 	public static function getSearchResults($lat, $long, $searchTerm) {
-		if(empty($searchTerm))
-		{
-			return self::_getResults($lat, $long);
+		if (empty ( $searchTerm )) {
+			return self::_getResults ( $lat, $long );
 		}
 		
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
@@ -34,7 +32,6 @@ class Places {
 		
 		return $results;
 	}
-	
 	private static function _getResults($lat, $long) {
 		$googlePlaces = new googlePlaces ( self::$GOOGLE_MAPS_API_KEY );
 		
@@ -45,7 +42,10 @@ class Places {
 		
 		$results = $googlePlaces->nearbySearch ();
 		
-		$results ['result'] = array_filter ( $results ['result'], "self::filterPlace" );
+		if(isset($results ['result']))
+		{
+			$results ['result'] = array_filter ( $results ['result'], "self::filterPlace" );
+		}
 		
 		return $results;
 	}
