@@ -120,7 +120,13 @@ class YelpPlaces {
 		
 		$business = $this->client->getBusiness ( $businessId );
 		
-		$business->reviews = $this->client->getBusinessReviews ( $businessId )->reviews;
+		$revs = $this->client->getBusinessReviews ( $businessId );
+		
+		if(isset($revs) && isset ($revs->reviews)) {
+			$business->reviews = $this->client->getBusinessReviews ( $businessId )->reviews;
+		} else {
+			return false;
+		}
 		
 		$business = ( array ) $business;
 		
